@@ -15,7 +15,6 @@ def index():
     return "Pagina de inicio"
 
 
-
 app.config.from_object(config['development'])
 app.register_blueprint(Login.main, url_prefix='/api/login')
 app.register_blueprint(Producto.prod, url_prefix='/api/producto')
