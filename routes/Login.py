@@ -26,7 +26,6 @@ def registro():
         conexion =  get_connection()
         with conexion.cursor() as cursor:
             requestjson = request.json
-
             if request.method == 'POST' and 'username' in requestjson and 'password' in requestjson and 'email' in requestjson:
                 name = requestjson['name']
                 lastname = requestjson['lastname']
@@ -35,8 +34,6 @@ def registro():
                 email = requestjson['email']
                 phone = requestjson['phone']
                 adress = requestjson['adress']
-                favorito = requestjson['favorito']
-                pedidos = requestjson['pedidos']
                 _hashed_password = generate_password_hash(password)
                 cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
                 account = cursor.fetchone()
@@ -49,7 +46,7 @@ def registro():
                 elif not username or not password or not email:
                     flash('Please fill out the form!')
                 else:
-                    cursor.execute("INSERT INTO users (name, lastname, username, password, email,phone,adress,favorito,pedidos) VALUES (%s,%s,%s,%s,%s,%s,%s,%s, %s)", (name,lastname, username, _hashed_password, email,phone,adress,favorito,pedidos))
+                    cursor.execute("INSERT INTO users (name, lastname, username, password, email,phone,adress) VALUES (%s,%s,%s,%s,%s,%s,%s)", (name,lastname, username, _hashed_password, email,phone,adress))
                     conexion.commit()
                     print(conexion)
                     flash('You have successfully registered!')

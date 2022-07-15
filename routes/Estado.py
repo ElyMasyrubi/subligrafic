@@ -71,7 +71,6 @@ def id_condition(id):
         conexion.close()
 
 
-
 @condition.route('/delete/<int:id>', methods=['DELETE'])
 def id_delete(id):
     try:
@@ -80,7 +79,25 @@ def id_delete(id):
             cursor.execute("DELETE FROM estado WHERE id = %s", (id,))
             filas = cursor.rowcount
             conexion.commit()
-        conexion.close()
         return f'Elementos eliminados: {filas}'
     except Exception as ex:
         raise Exception(ex)
+    finally:
+        conexion.close()
+
+
+
+@condition.route('/updates/<int:id>', methods=['PUT'])
+def update(id):
+    nombre = request.json['nombre']
+    try:
+        conexion = get_connection()
+        with conexion.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            cursor.execute("""UPDATE estado SET nombre = %s WHERE id = %s""", ( nombre.nombre, id))
+            filas = cursor.rowcount
+            conexion.commit()
+        conexion.close()
+        return jsonify(filas)
+    except Exception as ex:
+        raise Exception(ex)
+        

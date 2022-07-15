@@ -17,12 +17,12 @@ def registro():
         conexion = get_connection()
         with conexion.cursor() as cursor:
             requestjson = request.json
-            if request.method == 'POST' and 'nombre' in requestjson and 'bolean' in requestjson:
+            if request.method == 'POST' and 'nombre' in requestjson and 'boolea' in requestjson:
                 nombre = requestjson['nombre']
-                bolean = requestjson['bolean']
+                boolea = requestjson['boolea']
                 #cursor.execute('SELECT * FROM pedidos WHERE id_usuario = %s', (id_usuario,))
                 # cursor.fetchone()
-                cursor.execute("INSERT INTO campo_personalizado (nombre, bolean) VALUES (%s, %s)", (nombre, bolean,))
+                cursor.execute("INSERT INTO campo_personalizado (nombre, boolea) VALUES (%s, %s)", (nombre, boolea,))
                 conexion.commit()
                 flash('You have successfully registered!')
                 return 'You have successfully registered!'
