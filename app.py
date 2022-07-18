@@ -2,10 +2,6 @@ from flask import Flask
 from routes import Login, Producto, Pedidos, TipoDeProducto, Tematica, TipoDeTrabajo, CampoPersonalizado, DetallesDePago, Estado
 from config import config
 
-
-
-
-
 app=Flask(__name__)
 
 app.secret_key = 'Password0101'
