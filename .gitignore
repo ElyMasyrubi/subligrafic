@@ -1,0 +1,4 @@
+#list of ignores
+env
+venv
+__pycache__
