@@ -1,1 +1,1 @@
-web:gunicorn subligrafic:flask
+web:gunicorn app:app
