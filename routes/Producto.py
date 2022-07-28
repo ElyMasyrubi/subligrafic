@@ -20,7 +20,7 @@ def registro():
         with conexion.cursor() as cursor:
             requestjson = request.json
 
-            if request.method == 'POST' and 'code' in requestjson and 'title' in requestjson and 'description' in requestjson:
+            if request.method == 'POST' and 'code' and 'description' and 'title' in requestjson:
                 code = requestjson['code']
                 title = requestjson['title']
                 description = requestjson['description']
