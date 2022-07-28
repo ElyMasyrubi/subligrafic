@@ -60,7 +60,7 @@ def id_custom_field(id):
         conexion = get_connection()
         custom = []
         with conexion.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-            cursor.execute("SELECT id, nombre, bolean FROM campo_personalizado WHERE id = %s", (id,))
+            cursor.execute("SELECT id, nombre, boolea FROM campo_personalizado WHERE id = %s", (id,))
             resultado = cursor.fetchall()
             for row in resultado:
                 custo = CampoPerzonalizado(row[0], row[1], row[2])

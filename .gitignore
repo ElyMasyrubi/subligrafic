@@ -1,2 +1,4 @@
+#list of ignores
+env
 venv
-.env
+__pycache__
