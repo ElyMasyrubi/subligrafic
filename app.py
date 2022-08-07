@@ -1,6 +1,6 @@
 from flask import Flask
 from routes import Login, Producto, Pedidos, TipoDeProducto, Tematica, TipoDeTrabajo, CampoPersonalizado, DetallesDePago, Estado
-from config import config
+#from config import config
 
 app=Flask(__name__)
 
@@ -12,7 +12,7 @@ def index():
 
 
 if __name__ == '__main__':
-    app.config.from_object(config['development'])
+    #app.config.from_object(config['development'])
     app.register_blueprint(Login.main, url_prefix='/api/login')
     app.register_blueprint(Producto.prod, url_prefix='/api/producto')
     app.register_blueprint(Pedidos.orders, url_prefix='/api/orders')
